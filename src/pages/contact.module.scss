@@ -1,0 +1,127 @@
+@use "../scss/global";
+
+h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.25rem;
+  text-align: center;
+
+  @media (max-width: global.$width-mobile) {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+
+  @media (max-width: global.$width-mobile) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+}
+
+.contact_page {
+  background-color: global.$white;
+  padding-bottom: 100px;
+  padding-top: 50px;
+
+  & .details {
+    margin: 100px auto;
+    max-width: 700px;
+
+    & .details_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+
+      @media (max-width: global.$width-mobile) {
+        padding: 0 20px;
+      }
+
+      & button {
+        margin-top: 10px;
+        border: 2px solid global.$black;
+        background-color: global.$pale-red;
+        color: global.$white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 300ms ease;
+        box-shadow: 6px 6px 0 0 rgb(0, 0, 0);
+
+        @media (max-width: global.$width-mobile) {
+          font-size: 0.8rem;
+          padding: 5px;
+        }
+
+        &:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: 7px 7px 0 0 rgb(0, 0, 0);
+          filter: brightness(1.2);
+          cursor: pointer;
+        }
+      }
+    }
+
+    & ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      background-color: global.$pale-orange;
+      border: 2px solid global.$black;
+      border-radius: 10px;
+      padding: 20px;
+
+      @media (max-width: global.$width-mobile) {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        grid-template-columns: 1fr;
+      }
+
+      & li {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & p:first-child {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  & .contact_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto 30px;
+    padding: 0 20px;
+    text-align: center;
+
+    @media (max-width: global.$width-mobile) {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    & h2 {
+      margin-bottom: 10px;
+    }
+  }
+
+  & .contact_info {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+}
