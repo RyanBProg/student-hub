@@ -1,0 +1,48 @@
+@use "../../scss/global";
+
+.top_nav {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: global.$dark-red;
+  border-bottom: 2px solid black;
+
+  & .logo {
+    font-weight: 800;
+    width: min-content;
+    font-size: 1.2rem;
+    transition: color 300ms ease;
+
+    &:hover {
+      color: global.$pale-red;
+      cursor: pointer;
+    }
+  }
+
+  & ul {
+    display: flex;
+    gap: 20px;
+
+    & li {
+      border: 2px solid global.$black;
+      border-radius: 5px;
+      padding: 5px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.12rem;
+      box-shadow: 3px 3px 0 0 rgb(0, 0, 0);
+      transition: all 200ms ease;
+
+      &:last-child {
+        background-color: global.$pale-red;
+      }
+
+      &:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 4px 4px 0 0 rgb(0, 0, 0);
+        background-color: global.$pale-orange;
+      }
+    }
+  }
+}
