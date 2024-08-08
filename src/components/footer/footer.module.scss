@@ -1,0 +1,34 @@
+@use "../../scss/global";
+
+.footer {
+  background-color: global.$dark-red;
+  color: global.$white;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+
+  & .logo {
+    font-weight: 800;
+    width: min-content;
+    font-size: 1.2rem;
+    transition: color 300ms ease;
+
+    &:hover {
+      color: global.$pale-red;
+      cursor: pointer;
+    }
+  }
+
+  & .nav_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  & .copyright {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
