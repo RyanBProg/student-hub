@@ -1,5 +1,15 @@
+import Contact from "./pages/Contact";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+
 function App() {
-  return <>hello world!</>;
+  return (
+    <>
+      <Navbar />
+      <Contact />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
