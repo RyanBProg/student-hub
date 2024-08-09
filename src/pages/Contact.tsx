@@ -1,33 +1,56 @@
 import ContactForm from "../components/form/ContactForm";
 import styles from "./contact.module.scss";
+import mailIcon from "/icons/mail.png";
+import profileIcon from "/icons/user.png";
+import idIcon from "/icons/id-card.png";
+import houseIcon from "/icons/home.png";
+import airplaneIcon from "/icons/paper-airplane.png";
 
 export default function Contact() {
   return (
     <div className={styles.contact_page}>
-      <h1>Ask a Question</h1>
-      <div className={styles.details}>
-        <div className={styles.details_title}>
-          <h2>Your Details</h2>
-          <button>Update Details</button>
+      <div className={styles.details_container}>
+        <div className={styles.title_container}>
+          <img src={airplaneIcon} alt="airplane icon" />
+          <h1>Ask a Question</h1>
+          <img src={airplaneIcon} alt="airplane icon" />
         </div>
-        <ul>
-          <li>
-            <p>Name</p>
-            <p>Ryan Bowler</p>
-          </li>
-          <li>
-            <p>Email</p>
-            <p>ryan.bowler96@gmail.com</p>
-          </li>
-          <li>
-            <p>College ID</p>
-            <p>2938743</p>
-          </li>
-          <li>
-            <p>Address</p>
-            <p>24 Brick Street</p>
-          </li>
-        </ul>
+        <div className={styles.details}>
+          <div className={styles.details_title}>
+            <h2>Your Details</h2>
+            <button>Update Details</button>
+          </div>
+          <ul>
+            <li>
+              <div>
+                <img src={profileIcon} alt="profile icon" />
+                <p>Name</p>
+              </div>
+              <p>Ryan Bowler</p>
+            </li>
+            <li>
+              <div>
+                <img src={mailIcon} alt="mail icon" />
+                <p>Email</p>
+              </div>
+              <p>ryan.bowler96@gmail.com</p>
+            </li>
+            <li>
+              <div>
+                <img src={idIcon} alt="id icon" />
+                <p>College ID</p>
+              </div>
+              <p>2938743</p>
+            </li>
+            <li>
+              <div>
+                <img src={houseIcon} alt="home icon" />
+                <p>Address</p>
+              </div>
+              <p>24 Brick Street</p>
+            </li>
+          </ul>
+        </div>
       </div>
       <div>
         <div className={styles.contact_title}>
