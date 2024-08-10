@@ -7,6 +7,7 @@
   align-items: center;
   color: global.$dark-red;
   border-bottom: 2px solid black;
+  background-color: global.$white;
 
   & .logo {
     font-weight: 800;
@@ -25,24 +26,50 @@
     gap: 20px;
 
     & li {
-      border: 2px solid global.$black;
-      border-radius: 5px;
-      padding: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.12rem;
-      box-shadow: 3px 3px 0 0 rgb(0, 0, 0);
-      transition: all 200ms ease;
+      @include global.nav-button(
+        global.$white,
+        global.$black,
+        global.$pale-orange
+      );
+    }
 
-      &:last-child {
-        background-color: global.$pale-red;
-      }
+    & .account_btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
 
-      &:hover {
-        transform: translate(-1px, -1px);
-        box-shadow: 4px 4px 0 0 rgb(0, 0, 0);
-        background-color: global.$pale-orange;
+      & img {
+        height: 1rem;
       }
+    }
+
+    & .dropdown {
+      position: absolute;
+      top: 80px;
+      background-color: global.$white;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.05);
+      transition: opacity 200ms ease;
+      opacity: 0;
+    }
+
+    .dropdown_account {
+      right: 20px;
+
+      & li:last-child {
+        @include global.nav-button(
+          global.$pale-red,
+          global.$black,
+          global.$pale-orange
+        );
+      }
+    }
+
+    & .dropdown_open {
+      opacity: 100;
     }
   }
 }
