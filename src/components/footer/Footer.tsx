@@ -1,4 +1,5 @@
 import styles from "./footer.module.scss";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -8,7 +9,9 @@ export default function Footer() {
         <ul>
           <li>Home</li>
           <li>Hub</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to={"/contact"}>Contact Us</Link>
+          </li>
         </ul>
         <ul>
           <li>Priacy Policy</li>
