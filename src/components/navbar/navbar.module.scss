@@ -10,8 +10,9 @@
   background-color: global.$white;
 
   & .logo {
-    font-weight: 800;
+    display: inline-block;
     width: min-content;
+    font-weight: 800;
     font-size: 1.2rem;
     transition: color 300ms ease;
 

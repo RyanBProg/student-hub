@@ -1,16 +1,25 @@
 import styles from "./navbar.module.scss";
 import { useState, useEffect, useRef, ReactNode } from "react";
 import accountIcon from "/icons/user.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <header className={styles.top_nav}>
-      <p className={styles.logo}>Equinium College</p>
+      <Link to={"/"}>
+        <span className={styles.logo}>Equinium College</span>
+      </Link>
       <nav>
         <ul>
-          <li>Hub</li>
-          <li>News</li>
-          <li>Timetable</li>
+          <li>
+            <Link to={"/"}>Hub</Link>
+          </li>
+          <li>
+            <Link to={"/news"}>News</Link>
+          </li>
+          <li>
+            <Link to={"/timetable"}>Timetable</Link>
+          </li>
           <Dropdown name={"Social"}>
             <li>Events</li>
             <li>Community</li>
