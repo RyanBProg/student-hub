@@ -1,4 +1,4 @@
-import ContactForm from "../components/form/ContactForm";
+import ContactForm from "../../components/form/ContactForm";
 import styles from "./contact.module.scss";
 import mailIcon from "/icons/mail.png";
 import profileIcon from "/icons/user.png";
