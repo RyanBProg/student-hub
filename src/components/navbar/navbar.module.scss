@@ -1,40 +1,76 @@
 @use "../../scss/global";
 
 .top_nav {
+  isolation: isolate;
+  position: relative;
+}
+
+header {
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: global.$dark-red;
   border-bottom: 2px solid black;
   background-color: global.$white;
+}
 
-  & .logo {
-    display: inline-block;
-    width: min-content;
-    font-weight: 800;
-    font-size: 1.2rem;
-    transition: color 300ms ease;
+.logo {
+  display: inline-block;
+  width: min-content;
+  font-weight: 800;
+  font-size: 1.2rem;
+  transition: color 300ms ease;
 
-    &:hover {
-      color: global.$pale-red;
-      cursor: pointer;
-    }
+  &:hover {
+    color: global.$pale-red;
+    cursor: pointer;
+  }
+}
+
+.mobile_menu_button {
+  border: none;
+  background-color: transparent;
+  display: none;
+
+  @media (max-width: global.$width-mobile) {
+    display: block;
   }
 
-  & ul {
+  &:hover {
+    cursor: pointer;
+  }
+
+  & > img {
+    height: 30px;
+  }
+}
+
+// nav menu
+
+.nav_menu {
+  @media (max-width: global.$width-mobile) {
+    position: absolute;
+    top: -250px;
+    width: 250px;
+    right: 20px;
+    background-color: global.$pale-red;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid global.$black;
+    transition: top 400ms ease-in-out, opacity 400ms ease-in-out;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  & .nav_list {
     display: flex;
     gap: 20px;
 
-    & li {
-      @include global.nav-button(
-        global.$white,
-        global.$black,
-        global.$pale-orange
-      );
+    @media (max-width: global.$width-mobile) {
+      flex-direction: column;
     }
 
-    & .account_btn {
+    & .dropdown_btn {
       display: flex;
       align-items: center;
       gap: 5px;
@@ -43,34 +79,62 @@
         height: 1rem;
       }
     }
+  }
+}
 
-    & .dropdown {
-      position: absolute;
-      top: 80px;
-      background-color: global.$white;
-      padding: 20px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.05);
-      transition: opacity 200ms ease;
-      opacity: 0;
-    }
+.mobile_nav_open {
+  top: 80px;
+  opacity: 1;
+}
 
-    .dropdown_account {
-      right: 20px;
+.nav_item {
+  @include global.nav-button(global.$white, global.$black, global.$pale-orange);
+}
 
-      & li:last-child {
-        @include global.nav-button(
-          global.$pale-red,
-          global.$black,
-          global.$pale-orange
-        );
-      }
-    }
+// dropdowns
 
-    & .dropdown_open {
-      opacity: 100;
-    }
+.dropdown_container {
+  position: relative;
+}
+
+.dropdown_list {
+  width: max-content;
+  position: absolute;
+  right: 0;
+  top: -160px;
+  background-color: global.$white;
+  border: 2px solid global.$black;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: top 400ms ease-in-out, opacity 400ms ease-in-out;
+  z-index: -1;
+  opacity: 0;
+
+  @media (max-width: global.$width-mobile) {
+    border: none;
+    z-index: 0;
+    padding: 0;
+    padding-left: 20px;
+    margin-top: 10px;
+    background-color: transparent;
+    transition: none;
+    transition: opacity 400ms ease-in-out;
+    display: none;
+    position: relative;
+    right: 0;
+    width: 100%;
+  }
+}
+
+.dropdown_list_open {
+  top: 60px;
+  opacity: 1;
+
+  @media (max-width: global.$width-mobile) {
+    display: flex;
+    top: 0;
   }
 }
