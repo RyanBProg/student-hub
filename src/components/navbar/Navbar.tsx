@@ -50,11 +50,16 @@ export default function Navbar() {
   return (
     <div className={styles.top_nav}>
       <header>
-        <Link to={"/"}>
-          <span className={styles.logo}>Equinium College</span>
+        <Link to={"/"} aria-label="home page link">
+          <span className={styles.logo}>Equinim College</span>
         </Link>
         <button
           ref={mobileMenuButton}
+          aria-expanded={menuOpen}
+          aria-controls="mobile main navigation"
+          aria-label={
+            menuOpen ? "close navigation menu" : "open navigation menu"
+          }
           onClick={() => {
             setMenuOpen((prev) => !prev);
             if (menuOpen) setOpenDropdowns([]);
@@ -63,7 +68,7 @@ export default function Navbar() {
           {menuOpen ? (
             <img src={closeIcon} alt="close menu icon" />
           ) : (
-            <img src={menuIcon} alt="menu icon" />
+            <img src={menuIcon} alt="open menu icon" />
           )}
         </button>
         <nav
@@ -85,18 +90,30 @@ export default function Navbar() {
               name={"Social"}
               isOpen={openDropdowns.includes("Social")}
               toggleDropdown={() => toggleDropdown("Social")}>
-              <li className={styles.nav_item}>Events</li>
-              <li className={styles.nav_item}>Community</li>
+              <li>
+                <button className={styles.nav_item}>Events</button>
+              </li>
+              <li>
+                <button className={styles.nav_item}>Community</button>
+              </li>
             </Dropdown>
             <Dropdown
               name={"Account"}
               icon={accountIcon}
               isOpen={openDropdowns.includes("Account")}
               toggleDropdown={() => toggleDropdown("Account")}>
-              <li className={styles.nav_item}>My Account</li>
-              <li className={styles.nav_item}>Messages</li>
-              <li className={styles.nav_item}>Invoices</li>
-              <li className={styles.nav_item}>Log Out</li>
+              <li>
+                <button className={styles.nav_item}>My Account</button>
+              </li>
+              <li>
+                <button className={styles.nav_item}>Messages</button>
+              </li>
+              <li>
+                <button className={styles.nav_item}>Invoices</button>
+              </li>
+              <li>
+                <button className={styles.nav_item}>Log Out</button>
+              </li>
             </Dropdown>
           </ul>
         </nav>
@@ -123,12 +140,11 @@ function Dropdown({
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
+  // dropdown menu click behaviour
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Get the window's width
       const isMobile = window.innerWidth <= 768;
 
-      // Only close the dropdown if it's not a mobile screen
       if (!isMobile) {
         if (
           buttonRef.current &&
@@ -154,14 +170,42 @@ function Dropdown({
     };
   }, [isOpen, toggleDropdown]);
 
+  // auto mob menu dropdown item focus on open
+  useEffect(() => {
+    if (isOpen) {
+      const firstChild = dropdownRef.current?.querySelector("button");
+      firstChild?.focus();
+    }
+  }, [isOpen]);
+
+  // set tab index for dropdowns
+  useEffect(() => {
+    const dropdownItems = dropdownRef.current?.querySelectorAll("li > button");
+
+    if (isOpen) {
+      dropdownItems.forEach((item: HTMLElement) => {
+        item.setAttribute("tabindex", "0");
+      });
+    } else {
+      dropdownItems.forEach((item: HTMLElement) => {
+        item.setAttribute("tabindex", "1");
+      });
+    }
+  }, [isOpen]);
+
   return (
     <div className={styles.dropdown_container}>
-      <li
-        onClick={toggleDropdown}
-        className={`${styles.dropdown_btn} ${styles.nav_item}`}
-        ref={buttonRef}>
-        {icon && <img src={icon} alt="nav icon" />}
-        {name} &darr;
+      <li>
+        <button
+          onClick={toggleDropdown}
+          aria-label={isOpen ? `close ${name}` : `open ${name}`}
+          aria-controls={`${name} dropdown menu`}
+          aria-expanded={isOpen}
+          className={`${styles.dropdown_btn} ${styles.nav_item}`}
+          ref={buttonRef}>
+          {icon && <img src={icon} alt="" />}
+          {name} &darr;
+        </button>
       </li>
       <ul
         className={`${styles.dropdown_list} ${
