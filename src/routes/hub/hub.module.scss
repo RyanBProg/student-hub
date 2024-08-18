@@ -1,1 +1,245 @@
 @use "../../scss/global";
+
+.container {
+  max-width: 1000px;
+  margin: 50px auto 150px;
+  padding: 0 20px;
+
+  @media (min-width: global.$width-mobile) {
+    padding: 0 40px;
+  }
+}
+
+.profile_card {
+  display: flex;
+  gap: 20px;
+  margin: 0 auto 50px;
+
+  & img {
+    height: 60px;
+  }
+
+  & h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    margin-bottom: 5px;
+  }
+
+  & p {
+    color: global.$gray;
+
+    & span {
+      font-weight: 700;
+    }
+  }
+}
+
+.block {
+  margin-bottom: 50px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  border-radius: 10px;
+
+  & h2 {
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 20px;
+  }
+}
+
+.activity_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  & li {
+    border: 2px solid global.$blue-gray;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+
+    &::before {
+      content: ">";
+      text-align: center;
+      font-size: 10px;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: rgb(112, 209, 135);
+      border: 1px solid global.$black;
+      border-radius: 100%;
+      top: -7.5px;
+      left: -7.5px;
+    }
+
+    & h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 5px;
+    }
+
+    & p {
+      color: global.$gray;
+      letter-spacing: 0.05rem;
+    }
+  }
+
+  & button {
+    margin: 0 auto;
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: global.$gray;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+      color: global.$black;
+      cursor: pointer;
+    }
+  }
+}
+
+.study_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  & li {
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+    padding: 20px 20px;
+    border: 2px solid global.$blue-gray;
+    border-right: none;
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+
+    @media (min-width: global.$width-mobile) {
+      margin: 0 auto;
+      width: 100%;
+      border: 2px solid global.$blue-gray;
+      border-radius: 5px;
+    }
+
+    & img {
+      text-align: center;
+      font-size: 10px;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+      background-color: rgb(253, 191, 129);
+      border: 1px solid global.$black;
+      border-radius: 100%;
+      top: -15px;
+      left: calc(50% - 15px);
+    }
+
+    & h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: global.$black;
+    }
+
+    & button {
+      border: 2px solid global.$black;
+      background-color: global.$pale-red;
+      color: global.$white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.15rem;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 300ms ease;
+      box-shadow: 4px 4px 0 0 rgb(0, 0, 0);
+      width: fit-content;
+
+      &:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 5px 5px 0 0 rgb(0, 0, 0);
+        filter: brightness(1.2);
+        cursor: pointer;
+      }
+    }
+
+    & .progress_track {
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid global.$black;
+      background-color: global.$white;
+      position: relative;
+      overflow: hidden;
+
+      & .progress_bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgb(112, 209, 112);
+        height: 100%;
+        width: 21%;
+      }
+
+      & span {
+        position: relative;
+        z-index: 99;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.btns_container {
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  contain: inline-size;
+
+  @media (min-width: global.$width-mobile) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  & button {
+    border: 2px solid global.$black;
+    color: global.$black;
+    background-color: global.$white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15rem;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 0 0 rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 7px 7px 0 0 rgb(0, 0, 0);
+      background-color: global.$pale-orange;
+      cursor: pointer;
+    }
+
+    & img {
+      display: block;
+      height: 40px;
+
+      @media (min-width: 450px) {
+        height: 60px;
+      }
+
+      @media (min-width: global.$width-mobile) {
+        height: 30px;
+      }
+    }
+  }
+}
