@@ -72,8 +72,8 @@ header {
     }
 
     & .nav_item {
-      width: 100%;
       text-align: left;
+      width: 100%;
 
       & a {
         display: block;
@@ -85,6 +85,7 @@ header {
       display: flex;
       align-items: center;
       gap: 5px;
+      min-width: max-content;
 
       & img {
         height: 1rem;
