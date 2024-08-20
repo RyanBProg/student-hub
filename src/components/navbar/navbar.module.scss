@@ -3,6 +3,7 @@
 .top_nav {
   isolation: isolate;
   position: relative;
+  z-index: 99;
 }
 
 header {
@@ -68,6 +69,16 @@ header {
 
     @media (max-width: global.$width-mobile) {
       flex-direction: column;
+    }
+
+    & .nav_item {
+      width: 100%;
+      text-align: left;
+
+      & a {
+        display: block;
+        width: 100%;
+      }
     }
 
     & .dropdown_btn {
